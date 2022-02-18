@@ -1,6 +1,19 @@
-Param([string]$Repository, [string]$Directory)
+Param (
+    [Parameter(Mandatory, HelpMessage = "The repository to clone from")]
+    [string]
+    $Repository,
 
-# ${Directory} = Split-Path -LeafBase -Path "${Repository}"
+    [Parameter(HelpMessage = "The directory to clone into")]
+    [string]
+    $Directory
+)
+
+If (${Directory} -eq [string]::Empty) {
+    # HOPE: PS v7
+    # ${Directory} = Split-Path -LeafBase -Path "${Repository}"
+    ${Directory} = (Split-Path -Leaf -Path "${Repository}") -replace '\..*'
+}
+
 
 If (!(Test-Path -Path "${Directory}")) {
     New-Item -ItemType Directory -Path "${Directory}"
@@ -17,6 +30,7 @@ Else {
 }
 
 Set-Location -Path "${Directory}"
+
 
 git clone --single-branch --bare "${Repository}" .git
 
