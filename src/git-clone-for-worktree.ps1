@@ -5,7 +5,10 @@ Param (
 
     [Parameter(HelpMessage = "The directory to clone into")]
     [string]
-    $Directory
+    $Directory,
+
+    [switch]
+    $SingleBranch
 )
 
 If (${Directory} -eq [string]::Empty) {
@@ -32,9 +35,19 @@ Else {
 Set-Location -Path "${Directory}"
 
 
-git clone --single-branch --bare "${Repository}" .git
+If ($SingleBranch) {
+    git clone --single-branch --bare "${Repository}" .git
+}
+Else {
+    git clone --bare "${Repository}" .git
+}
 
 ${DefaultBranch} = git rev-parse --abbrev-ref HEAD
 
-git config --add remote.origin.fetch "+refs/heads/${DefaultBranch}:refs/remotes/origin/${DefaultBranch}"
+If ($SingleBranch) {
+    git config --add remote.origin.fetch "+refs/heads/${DefaultBranch}:refs/remotes/origin/${DefaultBranch}"
+}
+Else {
+    git config --add remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+}
 git worktree add "${DefaultBranch}"
