@@ -45,7 +45,7 @@ based off the `main` branch without disturbing your other worktrees.
 For more information on worktrees, see the documentation for [git-worktree](https://git-scm.com/docs/git-worktree).
 
 
-## Single Branch with Topics
+## Single Branch Clone
 
 Projects with many contributors can have large numbers of branches.
 Syncing every branch on these repositories takes a long time,
