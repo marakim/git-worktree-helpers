@@ -32,22 +32,27 @@ Else {
     Exit 1
 }
 
-Set-Location -Path "${Directory}"
 
+Push-Location -Path "${Directory}"
 
-If ($SingleBranch) {
-    git clone --single-branch --bare "${Repository}" .git
-}
-Else {
-    git clone --bare "${Repository}" .git
-}
+Try {
+    If ($SingleBranch) {
+        git clone --single-branch --bare "${Repository}" .git
+    }
+    Else {
+        git clone --bare "${Repository}" .git
+    }
 
-${DefaultBranch} = git rev-parse --abbrev-ref HEAD
+    ${DefaultBranch} = git rev-parse --abbrev-ref HEAD
 
-If ($SingleBranch) {
-    git config --add remote.origin.fetch "+refs/heads/${DefaultBranch}:refs/remotes/origin/${DefaultBranch}"
+    If ($SingleBranch) {
+        git config --add remote.origin.fetch "+refs/heads/${DefaultBranch}:refs/remotes/origin/${DefaultBranch}"
+    }
+    Else {
+        git config --add remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+    }
+    git worktree add "${DefaultBranch}"
 }
-Else {
-    git config --add remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+Finally {
+    Pop-Location
 }
-git worktree add "${DefaultBranch}"
