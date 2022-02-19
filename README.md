@@ -33,15 +33,14 @@ to checkout new and existing branches.
 
 ### Creating New Worktrees
 
-If a pressing change requires a hotfix, you can create a new `hotfix` worktree
-by going to the repository root and running:
+If a pressing change requires a hotfix, you can create a new `hotfix` worktree in the repository root with:
 
 ```powershell
 git worktree add -b urgent-bugfix hotfix main
 ```
 
-This creates a new branch `urgent-bugfix` and a new `hotfix` worktree for that branch
-based off `main` without disturbing your other worktrees.
+This creates a new `urgent-bugfix` branch in the new `hotfix` worktree
+based off the `main` branch without disturbing your other worktrees.
 
 For more information on worktrees, see the documentation for [git-worktree](https://git-scm.com/docs/git-worktree).
 
@@ -49,10 +48,10 @@ For more information on worktrees, see the documentation for [git-worktree](http
 ## Single Branch with Topics
 
 Projects with many contributors can have large numbers of branches.
-In these cases, it is common to prefix branch names with your username.
 Syncing every branch on these repositories takes a long time,
-so it is useful to clone in single branch mode and specify explicit topic branches to sync.
+so it is useful to limit which branches to sync.
 
+Common practice is to prefix branch names with your username.
 To setup a repository to have `git pull` sync only the main branch and branches with the prefix `USERNAME/`:
 
 ```powershell
@@ -61,7 +60,7 @@ cd my-repo
 git config --add remote.origin.fetch '+refs/heads/USERNAME/*:refs/remotes/origin/USERNAME/*'
 ```
 
-You can still fetch individual branches, for example `OTHERUSER/their-branch`, with:
+You can fetch other branches, for example `OTHERUSER/their-branch`, with:
 
 ```powershell
 git fetch origin OTHERUSER/their-branch:refs/remotes/origin/OTHERUSER/their-branch
