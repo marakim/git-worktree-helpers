@@ -29,7 +29,7 @@ git-clone-for-worktree.ps1 [-Repository] <string> [[-Directory] <string>] [-Sing
 
 You can clone a repository similar to using `git-clone` with:
 
-```powershell
+```bash
 git-clone-for-worktree git@github.com:my-project/my-repo.git
 ```
 
@@ -43,7 +43,7 @@ to checkout new and existing branches.
 
 If a pressing change requires a hotfix, you can create a new `hotfix` worktree in the repository root with:
 
-```powershell
+```bash
 git worktree add -b urgent-bugfix hotfix main
 ```
 
@@ -62,15 +62,15 @@ so it is useful to limit which branches to sync.
 Common practice is to prefix branch names with your username.
 To setup a repository to have `git pull` sync only the main branch and branches with the prefix `USERNAME/`:
 
-```powershell
-git-clone-for-worktree -SingleBranch git@github.com:my-project/my-repo.git
+```bash
+git-clone-for-worktree --single-branch git@github.com:my-project/my-repo.git
 cd my-repo
 git config --add remote.origin.fetch '+refs/heads/USERNAME/*:refs/remotes/origin/USERNAME/*'
 ```
 
 You can fetch and checkout other branches, for example `OTHERUSER/their-branch`, with:
 
-```powershell
+```bash
 git fetch origin OTHERUSER/their-branch:refs/remotes/origin/OTHERUSER/their-branch
 git checkout origin/OTHERUSER/their-branch
 ```
