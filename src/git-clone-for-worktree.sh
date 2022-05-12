@@ -13,14 +13,14 @@ do
   then
     Directory="$arg"
   else
-    echo 'Usage: [--single-branch] <repo> [<dir>]'
+    echo 'Usage: [--single-branch] <repository> [<directory>]'
     exit 1
   fi
 done
 
 if [ -z ${Repository+x} ]
 then
-  echo 'Usage: [--single-branch] <repo> [<dir>]'
+  echo 'Usage: [--single-branch] <repository> [<directory>]'
   exit 1
 fi
 

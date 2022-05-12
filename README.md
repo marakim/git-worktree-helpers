@@ -9,7 +9,7 @@ Clone a git repository for use with
 ### Bash
 
 ```bash
-git-clone-for-worktree.sh [--single-branch] <repo> [<dir>]
+git-clone-for-worktree.sh [--single-branch] <repository> [<directory>]
 ```
 
 ### PowerShell
@@ -22,7 +22,7 @@ git-clone-for-worktree.ps1 [-Repository] <string> [[-Directory] <string>] [-Sing
 
 * **Repository**: The repository to clone from.
 * **Directory**: The directory to clone into. By default the basename of the repository without extension.
-* **SingleBranch**: Only fetch the main branch.
+* **Single Branch**: Only fetch the main branch.
 
 
 ## Using Worktrees
