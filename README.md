@@ -6,8 +6,16 @@ Clone a git repository for use with
 
 ## Usage
 
+### Bash
+
+```bash
+git-clone-for-worktree.sh [--single-branch] <repo> [<dir>]
+```
+
+### PowerShell
+
 ```powershell
-git-clone-for-worktree [-Repository] <string> [[-Directory] <string>] [-SingleBranch]
+git-clone-for-worktree.ps1 [-Repository] <string> [[-Directory] <string>] [-SingleBranch]
 ```
 
 ### Arguments
