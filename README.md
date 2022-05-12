@@ -68,8 +68,9 @@ cd my-repo
 git config --add remote.origin.fetch '+refs/heads/USERNAME/*:refs/remotes/origin/USERNAME/*'
 ```
 
-You can fetch other branches, for example `OTHERUSER/their-branch`, with:
+You can fetch and checkout other branches, for example `OTHERUSER/their-branch`, with:
 
 ```powershell
 git fetch origin OTHERUSER/their-branch:refs/remotes/origin/OTHERUSER/their-branch
+git checkout origin/OTHERUSER/their-branch
 ```
