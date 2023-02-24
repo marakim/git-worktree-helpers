@@ -1,24 +1,52 @@
-# git-clone for git-worktree
+# git-worktree-helpers
+
+Helper scripts for git worktree
+
+## git-convert-for-worktree
+
+Convert an existing git repository for use with
+[git-worktree](https://www.git-scm.com/docs/git-worktree)
+
+### Usage
+
+#### Bash
+
+```bash
+git-convert-for-worktree.sh <directory>
+```
+
+#### Powershell
+
+```powershell
+git-convert-for-worktree.ps1 <directory>
+```
+
+#### Arguments
+
+* **Directory**: The directory containing an existing git repository
+
+
+## git-clone-for-worktree
 
 Clone a git repository for use with
 [git-worktree](https://www.git-scm.com/docs/git-worktree)
 
 
-## Usage
+### Usage
 
-### Bash
+#### Bash
 
 ```bash
 git-clone-for-worktree.sh [--single-branch] <repository> [<directory>]
 ```
 
-### PowerShell
+#### PowerShell
 
 ```powershell
 git-clone-for-worktree.ps1 [-Repository] <string> [[-Directory] <string>] [-SingleBranch]
 ```
 
-### Arguments
+#### Arguments
 
 * **Repository**: The repository to clone from.
 * **Directory**: The directory to clone into. By default the basename of the repository without extension.
